@@ -1,3 +1,4 @@
+[Discussion Post (created on 28/11/2020 at 14:14)](https://leetcode.com/problems/middle-of-the-linked-list/solution/)  
 <h2>876. Middle of the Linked List</h2><h3>Easy</h3><hr><div><p>Given a non-empty, singly&nbsp;linked list with head node <code>head</code>, return&nbsp;a&nbsp;middle node of linked list.</p>
 
 <p>If there are two middle nodes, return the second middle node.</p>
