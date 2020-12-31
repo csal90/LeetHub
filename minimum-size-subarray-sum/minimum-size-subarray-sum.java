@@ -1,17 +1,18 @@
 class Solution {
     public int minSubArrayLen(int s, int[] nums) {
-        int res = Integer.MAX_VALUE;
-        int left = 0;
-        int sum = 0;
+        int i = 0, j = 0, sum = 0, res = Integer.MAX_VALUE;
         
-        for (int i = 0; i < nums.length; i++) {
-            sum += nums[i];
+        while (i < nums.length) {
+            // add the current num to sum
+            sum += nums[i++];
+            // keep adding it until (sum >= s) 
             while (sum >= s) {
-                res = Math.min(res, i + 1 - left);
-                sum -= nums[left];
-                left++;
+                // we now need to calculate our current window
+                res = Math.min(res, i - j);
+                // remove our current sum to restablish out sum variable
+                sum -= nums[j++];
             }
         }
         return (res != Integer.MAX_VALUE) ? res : 0;
-    }   
+    }
 }
