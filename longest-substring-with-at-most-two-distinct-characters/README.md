@@ -1,3 +1,4 @@
+[Discussion Post (created on 4/0/2021 at 15:19)](https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/solution/)  
 <h2>159. Longest Substring with At Most Two Distinct Characters</h2><h3>Medium</h3><hr><div><p>Given a string <strong><em>s</em></strong> , find the length of the longest substring&nbsp;<strong><em>t&nbsp;&nbsp;</em></strong>that contains <strong>at most </strong>2 distinct characters.</p>
 
 <p><strong>Example 1:</strong></p>
