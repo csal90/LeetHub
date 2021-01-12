@@ -1,3 +1,4 @@
+[Discussion Post (created on 11/0/2021 at 19:4)](https://leetcode.com/problems/fibonacci-number/solution/)  
 <h2>509. Fibonacci Number</h2><h3>Easy</h3><hr><div><p>The&nbsp;<b>Fibonacci numbers</b>, commonly denoted&nbsp;<code>F(n)</code>&nbsp;form a sequence, called the&nbsp;<b>Fibonacci sequence</b>, such that each number is the sum of the two preceding ones, starting from <code>0</code> and <code>1</code>. That is,</p>
 
 <pre>F(0) = 0,&nbsp; &nbsp;F(1)&nbsp;= 1
