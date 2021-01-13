@@ -1,3 +1,4 @@
+[Discussion Post (created on 12/0/2021 at 20:18)](https://leetcode.com/problems/surrounded-regions/submissions/)  
 <h2>130. Surrounded Regions</h2><h3>Medium</h3><hr><div><p>Given a 2D board containing <code>'X'</code> and <code>'O'</code> (<strong>the letter O</strong>), capture all regions surrounded by <code>'X'</code>.</p>
 
 <p>A region is captured by flipping all <code>'O'</code>s into <code>'X'</code>s in that surrounded region.</p>
