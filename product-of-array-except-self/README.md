@@ -1,3 +1,4 @@
+[Discussion Post (created on 7/1/2021 at 16:16)](https://leetcode.com/problems/product-of-array-except-self/solution/)  
 <h2>238. Product of Array Except Self</h2><h3>Medium</h3><hr><div><p>Given an array <code>nums</code> of <em>n</em> integers where <em>n</em> &gt; 1, &nbsp;return an array <code>output</code> such that <code>output[i]</code> is equal to the product of all the elements of <code>nums</code> except <code>nums[i]</code>.</p>
 
 <p><b>Example:</b></p>
