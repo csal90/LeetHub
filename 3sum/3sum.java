@@ -1,26 +1,33 @@
 class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
-        Arrays.sort(nums);
-        List<List<Integer>> res = new ArrayList<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (i != 0 && nums[i] == nums[i - 1]) continue;
-            int curr = nums[i];
-            int left = i + 1, right = nums.length - 1;
-            while (left < right) {
-                int tmp = nums[left] + nums[right] + curr;
-                if (tmp == 0) {
-                    res.add(Arrays.asList(curr, nums[left], nums[right]));
-                    left++;
-                    while (left < right && nums[left] == nums[left - 1]) left++;
-                    right--;
-                    while (left < right && nums[right] == nums[right + 1]) right--;
-                } else if (tmp < 0) {
-                    left++;
-                } else {
-                    right--;
-                }
-            }
-        }
-        return res;
-    }
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+        
+        for (int i = 0; i < nums.length; i++) {
+            if (i != 0 && nums[i] == nums[i - 1]) 
+                continue;
+            
+            int low = i + 1;
+            int high = nums.length - 1;
+            
+            while (low < high) {
+                int temp = nums[i] + nums[low] + nums[high];
+                if (temp == 0) {
+                    result.add(Arrays.asList(nums[i], nums[low], nums[high]));
+                    while (low < high && nums[low] == nums[low + 1]) 
+                        low++;
+                    while (low < high && nums[high] == nums[high - 1]) 
+                        high--;
+                    low++;
+                    high--;
+                }
+                else if (temp < 0) {
+                    low++;
+                } else {
+                    high--;
+                }
+            }
+        }
+        return result;
+    }   
 }
