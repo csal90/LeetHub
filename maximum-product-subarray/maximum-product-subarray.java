@@ -1,5 +1,6 @@
 class Solution {
     public int maxProduct(int[] nums) {
+
         if (nums.length == 0) return 0;
 
         int currMax = nums[0];
@@ -12,9 +13,8 @@ class Solution {
             currMin = Math.min(nums[i], Math.min(currMin * nums[i], currMax * nums[i]));
             
             currMax = tmpMax;
-
             result = Math.max(result, currMax);
-        
+
         }
         
         return result;
