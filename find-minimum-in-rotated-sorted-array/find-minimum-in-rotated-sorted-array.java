@@ -1,36 +1,52 @@
 class Solution {
     public int findMin(int[] nums) {
-        int N = nums.length; 
-        
-        if (N == 1) {
-            return nums[0];
-        }
-        
-        if (nums[0] < nums[N - 1]) {
-            return nums[0];
-        }
-        
+        /*
+            - check if our nums is already sorted 
+            
+            - check if length of nums is 1
+            
+            - Binary search 
+                - mid 
+                - nums[mid] > nums[mid + 1]
+                    return nums[mid + 1] <-- that is our min value 
+                
+                - nums[mid - 1] > nums[mid]
+                    return nums[mid] <-- that has to be our min value 
+                    
+                - update our pointers 
+                if (nums[mid] > nums[0])
+                    low = mid + 1
+                else 
+                    high = mid -1
+        */
         int low = 0;
-        int high = N - 1;
+        int high = nums.length - 1;
+        
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        
+        if (nums[0] < nums[high]) {
+            return nums[0];
+        }
         
         while (low < high) {
-            int pivot = low + (high - low) / 2;
+            int mid = low + (high - low) / 2;
             
-            if (nums[pivot] > nums[pivot + 1]) {
-                return nums[pivot + 1];
+            if (nums[mid] > nums[mid + 1]) {
+                return nums[mid + 1];
             }
             
-            else if (nums[pivot] < nums[pivot - 1]) {
-                return nums[pivot];
+            if (nums[mid - 1] > nums[mid]) {
+                return nums[mid];
             }
             
-            else if (nums[low] > nums[pivot]) {
-                high = pivot - 1;
+            if (nums[mid] > nums[0]) {
+                low = mid + 1;
             } else {
-                low = pivot + 1;
+                high = mid - 1;
             }
         }
-        
         return -1;
     }
 }
