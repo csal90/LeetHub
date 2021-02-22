@@ -4,9 +4,10 @@ class Solution {
         int high = height.length - 1;
         int maxArea = 0;
         
-        while (low <= high) {
-            int minLine = Math.min(height[low], height[high]);
-            maxArea = Math.max(maxArea, minLine * (high - low));
+        while (low < high) {
+            int minBar = Math.min(height[low], height[high]);
+            maxArea = Math.max(maxArea, minBar * (high - low));
+            
             if (height[low] < height[high]) {
                 low++;
             } else {
