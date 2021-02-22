@@ -8,7 +8,7 @@ class Solution {
             if (nums[pivot] == target) {
                 return pivot;
             }
-            // check if the RHS is increasing
+            
             if (nums[pivot] >= nums[low]) {
                 if (target >= nums[low] && target < nums[pivot]) {
                     high = pivot - 1;
@@ -22,6 +22,7 @@ class Solution {
                     high = pivot - 1;
                 }
             }
+            
         }
         return -1;
     }
