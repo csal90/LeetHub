@@ -1,3 +1,4 @@
+[Discussion Post (created on 22/1/2021 at 18:13)](https://leetcode.com/problems/container-with-most-water/solution/)  
 <h2>11. Container With Most Water</h2><h3>Medium</h3><hr><div><p>Given <code>n</code> non-negative integers <code>a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>n</sub></code><sub>&nbsp;</sub>, where each represents a point at coordinate <code>(i, a<sub>i</sub>)</code>. <code>n</code> vertical lines are drawn such that the two endpoints of the line <code>i</code> is at <code>(i, a<sub>i</sub>)</code> and <code>(i, 0)</code>. Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.</p>
 
 <p><strong>Notice</strong>&nbsp;that you may not slant the container.</p>
