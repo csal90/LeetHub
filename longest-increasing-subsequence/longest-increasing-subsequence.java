@@ -1,38 +1,25 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
-        /*
-                Recurrance relation idea:
-                
-                    base case: once we extend past the nums[] array => return 
-                    
-                    2 recursive calls:
-                        - (1) => Take the current number (aka add onto our increasing subsequence)
-                        
-                        - (2) => Do not take the current number 
-                        
-                        Lastly, take the max ( 1 , 2) of our two recursive calls 
-                        and see which gives you a longer subsequence 
-                        
-                    Time: O(2^n) Space: O(n^2)
-                    
-                
-                Dynamic Programming: 
-                
-                    
-        */
+        // Base cases 
+        if (nums.length == 1) {
+            return 1;
+        }
         
+        // Fill the dp array with (1) at each position we have at list a sequence of 1
+        int max = 0;
         int[] dp = new int[nums.length];
-        int max = 1;
+        Arrays.fill(dp, 1);
         
-        for (int nIndx = 0; nIndx < nums.length; nIndx++) {
-            dp[nIndx] = 1;
-            for (int dpIndx = 0; dpIndx < nIndx; dpIndx++) {
-                if (nums[dpIndx] < nums[nIndx]) {
-                    dp[nIndx] = Math.max(dp[nIndx], dp[dpIndx] + 1);
-                    max = Math.max(max, dp[nIndx]);
+        // Iterate over the array (start from 1)
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) { // iterate all the elements before i
+                if (nums[j] < nums[i]) { // only then it's an increasing subsequence 
+                    dp[i] = Math.max(dp[i], dp[j] + 1); // it's possible we have computed a longer LIS, this is why we take the max of the previous solution, OR dp[j] + 1 indicating we should include thise element 
                 }
+                max = Math.max(max, dp[i]);
             }
         }
+        
         return max;
     }
 }
