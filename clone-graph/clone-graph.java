@@ -19,24 +19,35 @@ class Node {
 */
 
 class Solution {
-    private HashMap<Node, Node> visited = new HashMap<>();
+    /*
+        - Use a global hashmap
+        - Iterate over each node 
+        - Clone each node (aka create a new Node variable with it's value)
+        - Add visited.add(Node, ClonedNode)
+        - Iterate over Node's neighbors
+        - Recursively add it's neighbors. (All which will be cloned)
+        
+    */
+    private HashMap <Node, Node> visited = new HashMap <> ();
     public Node cloneGraph(Node node) {
         if (node == null) {
             return node;
         }
         
+        // Node has been visisted before. Return the clone from visited
         if (visited.containsKey(node)) {
             return visited.get(node);
         }
         
-        Node clone = new Node(node.val, new ArrayList());
-        visited.put(node, clone);
+        // Create clone for given node, add it to visited (KEY (OG GRAPH), VALUE (CLONED GRAPH))
+        Node clonedNode = new Node(node.val, new ArrayList());
+        visited.put(node, clonedNode);
         
+        // Iterate through neighbors of node and generate their clones 
         for (Node neighbor : node.neighbors) {
-            clone.neighbors.add(cloneGraph(neighbor));
+            clonedNode.neighbors.add(cloneGraph(neighbor));
         }
         
-        return clone;
-        
+        return clonedNode;
     }
 }
