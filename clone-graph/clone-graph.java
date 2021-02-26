@@ -19,33 +19,30 @@ class Node {
 */
 
 class Solution {
-    /*
-        Algorithm idea:
-        - Clone as we go
-        - Use a hashmap that will contain a key for our original graph 
-          and a value for our cloned graph 
-        - Create a copy for the given node we are on and clone all of it's neighbors 
-        - Append the neighbors to our clonedNode ArrayList 
-        - return clonedNode 
-        
-    */
     HashMap<Node, Node> visited = new HashMap<>();
     public Node cloneGraph(Node node) {
+        /*
+            Clone as you go
+            Global hashtable k,v pair <Node, Node> 
+                                        OG , CLONE
+            recursion to recursively keep created cloned nodes
+            and iterating through them and adding them to the nodes adj. list         
+        */
         if (node == null) {
-            return node;
+            return node; 
         }
         
         if (visited.containsKey(node)) {
             return visited.get(node);
         }
         
-        Node clonedNode = new Node(node.val, new ArrayList());
-        
-        visited.put(node, clonedNode);
+        // Main DFS 
+        Node clone = new Node(node.val, new ArrayList());
+        visited.put(node, clone);
         for (Node neighbor : node.neighbors) {
-            clonedNode.neighbors.add(cloneGraph(neighbor));
+            clone.neighbors.add(cloneGraph(neighbor));
         }
         
-        return clonedNode;
+        return clone;
     }
 }
