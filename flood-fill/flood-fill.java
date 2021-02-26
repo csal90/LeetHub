@@ -1,18 +1,25 @@
 class Solution {
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+        // check here (think base case)
         if (image[sr][sc] == newColor) return image;
-        int color = image[sr][sc];
-        dfs(image, sr, sc, color, newColor);
+        int currentColor = image[sr][sc];
+        dfs(image, sr, sc, newColor, currentColor);
         return image;
     }
-    private void dfs(int[][] image, int sr, int sc, int color, int newColor) {
-        if (sr < 0 || sr >= image.length || sc < 0 || sc >= image[0].length || image[sr][sc] != color) {
+    
+    private void dfs(int[][] image, int row, int col, int newColor, int currentColor) {
+        // Boundry check 
+        if (row < 0 || row >= image.length || col < 0 || col >= image[0].length
+           || image[row][col] != currentColor) {
             return;
-        }
-        image[sr][sc] = newColor;
-        dfs(image, sr + 1, sc, color, newColor);
-        dfs(image, sr - 1, sc, color, newColor);
-        dfs(image, sr, sc + 1, color, newColor);
-        dfs(image, sr, sc - 1, color, newColor);
+        } 
+        // "MARK"
+        image[row][col] = newColor;
+        
+        // DFS (UP, DOWN, LEFT, RIGHT)
+        dfs(image, row + 1, col, newColor, currentColor);
+        dfs(image, row - 1, col, newColor, currentColor);
+        dfs(image, row, col + 1, newColor, currentColor);
+        dfs(image, row, col - 1, newColor, currentColor);
     }
 }
