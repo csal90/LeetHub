@@ -1,18 +1,18 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        /*
-             ** TOPOLOGICAL SORTING ** 
-            Keep track of nodes indegree
-            if at the end all nodes indegree equal 0, then we have a DAG,
-            which means the course schedule can be finished.    
-        */
-        int[] indegree = new int[numCourses];
-        
-        // Indegree - how many prerequisites are needed
-        for (int i = 0; i < prerequisites.length; i++) {
-            indegree[prerequisites[i][0]]++; 
+        List<Integer>[] graph = new ArrayList[numCourses];
+        for (int i = 0; i < numCourses; i++) {
+            graph[i] = new ArrayList();
         }
-                
+        
+        int[] indegree = new int[numCourses];
+        for(int[] edge : prerequisites) {
+            int a = edge[0];
+            int b = edge[1];
+            graph[a].add(b);
+            indegree[b]++;
+        }
+        
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < numCourses; i++) {
             if (indegree[i] == 0) {
@@ -20,23 +20,17 @@ class Solution {
             }
         }
         
-        // How many course don't need prerequisites
-        int count = queue.size();
-        
-        // BFS
         while (!queue.isEmpty()) {
-            int curr = queue.poll();
-            for (int i = 0; i < prerequisites.length; i++) {
-                if (prerequisites[i][1] == curr) {
-                    indegree[prerequisites[i][0]]--;
-                    if (indegree[prerequisites[i][0]] == 0) {
-                        count++;
-                        queue.add(prerequisites[i][0]);
-                    }
+            int current = queue.poll();
+            for (int c : graph[current]) {
+                indegree[c]--;
+                if (indegree[c] == 0) {
+                    queue.add(c);
                 }
             }
+            numCourses--;
         }
         
-        return (count == numCourses);
+        return numCourses == 0;
     }
 }
