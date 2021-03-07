@@ -10,12 +10,6 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-        /*
-            Create a PQ that will store min elements at the front 
-            1) Append all the node values to PQ 
-            2) Create a new Node which we will append all of our elements to
-            3) Return said node
-        */
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         
         for (ListNode node : lists) {
