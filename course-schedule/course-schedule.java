@@ -1,35 +1,33 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        Map<Integer, List<Integer>> graph = new HashMap<>();
+        HashMap<Integer, List<Integer>> graph = new HashMap<>();
         int[] indegree = new int[numCourses];
         
-        for (int i = 0; i < prerequisites.length; i++) {
-            int src = prerequisites[i][1];
-            int dest = prerequisites[i][0];
-            
-            List<Integer> lst = graph.getOrDefault(src, new ArrayList<Integer>());
-            lst.add(dest);
-            
-            graph.put(src, lst);
-            indegree[dest]++; // increase the indegree for dest. node 
+        for (int i = 0; i < numCourses; i++) {
+            graph.put(i, new ArrayList<>());
         }
-                
-        Queue<Integer> queue = new LinkedList<>();
+        
+        for (int[] edge : prerequisites) {
+            int a = edge[0];
+            int b = edge[1];
+            graph.get(a).add(b);
+            indegree[b]++;
+        }
+        
+        Queue<Integer> q = new LinkedList<>();
         for (int i = 0; i < numCourses; i++) {
             if (indegree[i] == 0) {
-                queue.add(i);
+                q.add(i);
             }
         }
         
-        while (!queue.isEmpty()) {
-            int node = queue.poll();
+        while (!q.isEmpty()) {
+            int course = q.poll();
             numCourses--;
-            if (graph.containsKey(node)) {
-                for (Integer neighbor : graph.get(node)) {
-                    indegree[neighbor]--;
-                    if (indegree[neighbor] == 0) {
-                        queue.add(neighbor);
-                    }
+            for (Integer c : graph.get(course)) {
+                indegree[c]--;
+                if (indegree[c] == 0) {
+                    q.add(c);
                 }
             }
         }
