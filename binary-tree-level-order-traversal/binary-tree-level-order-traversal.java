@@ -20,19 +20,19 @@ class Solution {
         
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
-        int level = 0;
+
+        int depth = 0;
+        
         while (!q.isEmpty()) {
-            result.add(new ArrayList<Integer>());
+            result.add(new ArrayList());
             int levelSize = q.size();
-            
             for (int i = 0; i < levelSize; i++) {
-                TreeNode node = q.poll();
-                result.get(level).add(node.val);
-                if (node.left != null) q.add(node.left);
-                if (node.right != null) q.add(node.right);
+                TreeNode curr = q.poll();
+                result.get(depth).add(curr.val);
+                if (curr.left != null) q.add(curr.left);
+                if (curr.right != null) q.add(curr.right);
             }
-            
-            level++;
+            depth += 1;
         }
         
         return result;
